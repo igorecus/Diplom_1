@@ -3,6 +3,7 @@ from unittest.mock import Mock
 from burger import Burger
 from ingredient_types import INGREDIENT_TYPE_SAUCE, INGREDIENT_TYPE_FILLING
 
+
 class TestBurger:
     """Тесты для класса Burger"""
 
@@ -98,9 +99,7 @@ class TestBurger:
         burger.add_ingredient(ingredient1)
         burger.add_ingredient(ingredient2)
 
-        receipt = burger.get_receipt()
+        expected_receipt = "(==== white bun ====)\n= filling Cutlet =\n= sauce Hot Sauce =\n(==== white bun ====)\n\nPrice: 600"
+        actual_receipt = burger.get_receipt()
 
-        assert "(==== white bun ====)" in receipt
-        assert "= filling Cutlet =" in receipt
-        assert "= sauce Hot Sauce =" in receipt
-        assert "Price: 600" in receipt
+        assert actual_receipt == expected_receipt
